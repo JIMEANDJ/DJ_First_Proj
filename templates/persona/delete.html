@@ -1,0 +1,7 @@
+   <h1>Borrar persona</h1> 
+
+   <form method="post">{% csrf_token %}
+    <p>confirme que quiere eliminar</p>
+    {{form.as_p}}
+    <button type="submit">Confirmar</button>
+   </form>

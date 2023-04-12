@@ -1,0 +1,71 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href= "{% static 'css/foundation.min.css' %}">
+    <title>
+        {% block titulo %} 
+            Lista empleado por departamento
+
+        {% endblock titulo %} 
+
+
+    </title>
+</head>
+
+<body>
+    {% block cuerpo %}           {% endblock cuerpo%} 
+    <script src= "{% static 'js/vendor/jquery.js' %}"></script>
+    <script src= "{% static 'js/vendor/what-input.js' %}"></script>
+    <script src= "{% static 'js/vendor/foundation.min.js' %}"></script>    
+    <script>
+        $(document).foundation();
+    </script>
+</body>
+</html>
+
+
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<div class ="grid-container">
+    <div class = "grid-x">
+        <div class = "cell">Empleados por area</div>
+        <div class = "cell">
+            <table>
+                <thead>
+                    <tr>
+                    <th width="50">ID</th>
+                    <th width="100">Nombre</th>
+                    <th width="100">Apellidos</th>
+                    <th width="100">Departamento</th>
+                    <th width="100">Accion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for e in porarea %}
+                    <tr>
+                        <td>{{e.id}}</td>
+                        <td>{{e.first_name}}</td>
+                        <td>{{e.last_name}}</td>
+                        <td>{{e.departament}}</td>
+                        <td><a class="button warning" href={% url 'persona_app:empleado_detail' e.id  %}>VER</a></td>                               
+                    </tr>
+                    {% endfor %} 
+                </tbody>
+            </table>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+{% endblock %}
+
+
+

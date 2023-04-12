@@ -1,0 +1,73 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href= "{% static 'css/foundation.min.css' %}">
+    <title>
+        {% block titulo %} 
+            Update empleado
+
+        {% endblock titulo %} 
+
+
+    </title>
+</head>
+
+<body>
+    {% block cuerpo %}           {% endblock cuerpo%} 
+    <script src= "{% static 'js/vendor/jquery.js' %}"></script>
+    <script src= "{% static 'js/vendor/what-input.js' %}"></script>
+    <script src= "{% static 'js/vendor/foundation.min.js' %}"></script>    
+    <script>
+        $(document).foundation();
+    </script>
+</body>
+</html>
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<div class="grid-container">
+    <div class = "grid-x">
+        <h1 class="cell">Modificar empleado</h1>
+        <div class = "cell">
+            <form class ="grid-x" method="POST"> {% csrf_token %}
+                <div class="large-10 cell">
+                    <label> Nombres:
+                        {{form.first_name}}                      
+                    </label>
+                </div>
+                    <div class="large-10 cell">
+                    <label> Apellido:
+                        {{form.last_name}}                      
+                    </label>
+                </div>    
+                    <div class="large-10 cell">
+                    <label> Job title:
+                        {{form.job}}                      
+                    </label>
+                </div>    
+                    <div class="large-10 cell">
+                    <label> Departamento:
+                        {{form.departament}}                      
+                    </label>
+                </div>
+                    <div class="large-10 cell">
+                    <label> Habilidades:
+                        {{form.habilidades}}                          
+                    </label>
+                </div>
+                <div class= "cell">
+                    <button type="submit" class="success button">Save</button>
+
+                </div>
+                
+               
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
